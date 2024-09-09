@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-require("colors");
 const cors = require("cors");
 const connectDB = require("./dbinit");
 connectDB();
@@ -13,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Welcome to our eCommerce API !");
+  res.send("Welcome to our Pokemon API !");
 });
 
 app.listen(port, () => {

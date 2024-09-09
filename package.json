@@ -1,7 +1,7 @@
 {
   "name": "pokemon_api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "server.js",
     "dev": "node --watch server.js"
