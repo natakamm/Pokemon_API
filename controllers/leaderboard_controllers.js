@@ -43,4 +43,18 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, createOrUpdateUser };
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await Leaderboard.findByIdAndDelete(id);
+    if (!user) {
+      res.status(404).json({ message: "Sorry, I coudlnt find this user" });
+    } else {
+      res.status(200).json({ message: "User successfullly deleted" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { getAllUsers, createOrUpdateUser, deleteUser };
