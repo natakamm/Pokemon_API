@@ -3,12 +3,12 @@ const Leaderboard = require("../schemas/Leaderboard");
 const createOrUpdateUser = async (req, res) => {
   //game result will be lose or win based on how the game goes and that will be sent to backend with username
   const { username, gameResult } = req.body;
-  let won = 0;
-  let lost = 0;
+  let win = 0;
+  let lose = 0;
 
-  if (gameResult === "win") {
+  if (gameResult === "won") {
     win = 1;
-  } else if (gameResult === "lost ") {
+  } else if (gameResult === "lost") {
     lose = 1;
   } else {
     res
@@ -17,10 +17,12 @@ const createOrUpdateUser = async (req, res) => {
   }
 
   try {
-    //find user and update. $inc increments a field by a specified value. If gameResult is win, than won = 1, else 0 = 1
+    //find user and update. If gameResult is "win", than win = 1, else if gameResult is "lost" than lose = 1
+    // $inc increments a field by a specified value.
+    //upsert creates a document with the requirements if it doesnt already exist
     const user = await Leaderboard.findOneAndUpdate(
       { username },
-      { $inc: { won: won, lost: lost, battle: 1 } },
+      { $inc: { won: win, lost: lose, battles: 1 } },
       { new: true, upsert: true }
     );
     res.status(200).json({ message: "User successfully updated", user });
