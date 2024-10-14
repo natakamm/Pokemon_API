@@ -1,8 +1,11 @@
- https://pokemon-api-2j5r.onrender.com
+# Pokemon Backend API
+The backend is built using Node.js, MongoDB, and Mongoose. It follows a simple MVC (Model-View-Controller) pattern and serves as an Express-powered API. Its primary function is to store and manage the game's leaderboard data, allowing for efficient retrieval and storage of player statistics.
 
-The backend is built using Node.js, MongoDB, and Mongoose. It follows a simple MVC (Model-View-Controller) pattern, and its main function is to store and manage the game's leaderboard data. It uses Mongoose to define the schema for the leaderboard, where each player's username (which must be unique) is tracked, along with the number of battles they’ve fought, and their win/loss record.
+### Project Structure
+The backend adheres to a well-defined project structure, ensuring that the codebase remains organized and maintainable. Mongoose is used to define the schema for the leaderboard, where each player's username (which must be unique) is tracked, along with the number of battles they’ve fought and their win/loss record.
 
-The leaderboard schema has the following fields:
+### Leaderboard Schema
+#### The leaderboard schema includes the following fields:
 
 - username: A unique identifier for each player, with a minimum length of 2 characters and a maximum of 100.
 - battles: The total number of battles the player has participated in.
